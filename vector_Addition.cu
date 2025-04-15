@@ -25,7 +25,7 @@ int main(){
     float *d_A, *d_B, *d_C;     // Device pointers for vectors A, B, and C
 
     /*
-    Note that in CUDA programming, you can't directly use host arrays (like A, B, and C) with kernel launches (<<< ... >>>).
+    Note that in CUDA programming, you can't directly use host arrays (like A, B, and C) with kernel launches (<<<number_of_block, thread_per_block >>>).
     
     CUDA kernel operate on device memory, so you need to pass device pointers (d_A, d_B, and d_C) to the kernel for it to operate on.
 
@@ -44,7 +44,7 @@ int main(){
 
 
     // The number of CUDA threads that execute the above kernel can be spefified using <<< >>> notation.
-    // Kernel invocation with N threads
+    // Kernel invocation with 1 block and N threads
     AddTwoVectors<<<1, N>>>(d_A, d_B, d_C);
 
     
